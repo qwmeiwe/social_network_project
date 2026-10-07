@@ -1,0 +1,33 @@
+### 1. Создать новый пост (Успех 201)
+POST http://127.0.0.1:5000/posts
+Content-Type: application/json
+
+{
+    "author_id": "user_123",
+    "clan_emoji": "🦊",
+    "content": "Всем привет! Это мой первый пост в клане лис."
+}
+
+### 2. Ошибка валидации: слишком длинный текст (Ошибка 400)
+POST http://127.0.0.1:5000/posts
+Content-Type: application/json
+
+{
+    "author_id": "user_123",
+    "clan_emoji": "🦊",
+    "content": "Этот текст больше 280 символов..."
+}
+
+### 3. Получить список постов с фильтром и пагинацией (Успех 200)
+GET http://127.0.0.1:5000/posts?page=1&limit=5&clan_emoji=🦊
+
+### 4. Обновить пост (Подставь ID из ответа на создание)
+PUT http://127.0.0.1:5000/posts/{твой_id_поста}
+Content-Type: application/json
+
+{
+    "content": "Я обновил этот пост!"
+}
+
+### 5. Удалить пост (Подставь ID)
+DELETE http://127.0.0.1:5000/posts/{твой_id_поста}
